@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const navigationItems = [
   { label: "Domov", href: "#top" },
@@ -12,6 +12,14 @@ const navigationItems = [
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.classList.toggle("menu-is-open", isOpen);
+
+    return () => {
+      document.body.classList.remove("menu-is-open");
+    };
+  }, [isOpen]);
 
   return (
     <main className={`page-shell ${isOpen ? "page-shell--menu-open" : ""}`}>
@@ -32,6 +40,7 @@ export default function Home() {
         id="site-navigation"
         className={`top-navigation ${isOpen ? "top-navigation--open" : ""}`}
         aria-label="Hlavna navigacia"
+        aria-hidden={!isOpen}
       >
         <div className="navigation-inner">
           <a className="brand" href="#top" onClick={() => setIsOpen(false)}>
