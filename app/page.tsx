@@ -2,13 +2,19 @@
 
 import { useState } from "react";
 
-const navigationItems = ["Domov", "Sluzby", "Portfolio", "O nas", "Kontakt"];
+const navigationItems = [
+  { label: "Domov", href: "#top" },
+  { label: "Sluzby", href: "#sluzby" },
+  { label: "Portfolio", href: "#portfolio" },
+  { label: "O nas", href: "#o-nas" },
+  { label: "Kontakt", href: "#kontakt" }
+];
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <main className="page-shell">
+    <main className={`page-shell ${isOpen ? "page-shell--menu-open" : ""}`}>
       <button
         className={`menu-toggle ${isOpen ? "menu-toggle--open" : ""}`}
         type="button"
@@ -31,10 +37,11 @@ export default function Home() {
           <a className="brand" href="#top" onClick={() => setIsOpen(false)}>
             Skyline
           </a>
+          <p className="menu-label">Menu</p>
           <div className="navigation-links">
             {navigationItems.map((item) => (
-              <a key={item} href={`#${item.toLowerCase().replaceAll(" ", "-")}`}>
-                {item}
+              <a key={item.label} href={item.href} onClick={() => setIsOpen(false)}>
+                {item.label}
               </a>
             ))}
           </div>
@@ -43,10 +50,10 @@ export default function Home() {
 
       <section id="top" className="hero">
         <p className="eyebrow">Next.js demo</p>
-        <h1>Animovana navigacia, ktora sa vysunie zhora.</h1>
+        <h1>Biele fullscreen hamburger menu.</h1>
         <p className="hero-copy">
-          Klikni na tlacidlo vpravo hore a sleduj plynuly prechod navigacneho
-          panelu. Demo je postavene iba na React stave a CSS animaciach.
+          Klikni na hamburger vpravo hore. Menu sa vysunie zhora, prekryje
+          cely layout a zobrazi polozky pod sebou.
         </p>
         <div className="hero-actions">
           <button type="button" onClick={() => setIsOpen(true)}>

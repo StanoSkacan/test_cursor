@@ -1,6 +1,7 @@
 # Animated Top Navigation Demo
 
-Next.js demo aplikacia s navigaciou, ktora sa po kliknuti animovane vysuva zhora.
+Next.js demo aplikacia s fullscreen hamburger navigaciou, ktora sa po kliknuti
+animovane vysuva zhora, prekryje cely layout a zobrazi polozky menu pod sebou.
 
 ## Spustenie
 

@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Animated Navigation Demo",
-  description: "Demo navigacia, ktora sa animovane vysuva zhora."
+  description: "Demo fullscreen hamburger navigacie, ktora sa vysuva zhora."
 };
 
 export default function RootLayout({
